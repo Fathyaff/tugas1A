@@ -17,23 +17,25 @@ public class Tugas1A {
 		//Init the Map
 		String mapSize = read.readLine();
 		String[] sizeXY = mapSize.split(",");
-		int row = Integer.parseInt(sizeXY[0])-1;
-		int col = Integer.parseInt(sizeXY[1])-1;
+		int row = Integer.parseInt(sizeXY[0]);
+		int col = Integer.parseInt(sizeXY[1]);
 		Map map = new Map(row,col);
 		
 		//init Tony
 		String start = read.readLine();
 		String[] startTony = start.split(",");
-		int x = Integer.parseInt(startTony[0])-1;
-		int y = Integer.parseInt(startTony[1])-1;
+		int x = Integer.parseInt(startTony[0]);
+		int y = Integer.parseInt(startTony[1]);
 		map.addIntoMap(x, y, Map.TONY);
 		
 		//Init Item
 		String itemPositions = read.readLine();
 		String[] items = itemPositions.split(" ");
 		for(int i = 0; i<items.length;i++){
-			int xItem = items[i].charAt(2)-1;
-			int yItem = items[i].charAt(4)-1;
+			String xSplit = items[i].substring(1,2);
+			String ySplit = items[i].substring(3,4);
+			int xItem = Integer.parseInt(xSplit);
+			int yItem = Integer.parseInt(ySplit);
 			int element = Map.ITEM;
 			map.addIntoMap(xItem, yItem, element);
 		}
@@ -43,12 +45,17 @@ public class Tugas1A {
 		String barrierPositions = read.readLine();
 		String[] barriers = barrierPositions.split(" ");
 		for(int i = 0; i<barriers.length;i++){
-			int xBarr = barriers[i].charAt(2)-1;
-			int yBarr = barriers[i].charAt(4)-1;
+			String xSplit = barriers[i].substring(1,2);
+			String ySplit = barriers[i].substring(3,4);
+			int xBarr = Integer.parseInt(xSplit);
+			int yBarr = Integer.parseInt(ySplit);
 			int element = Map.BARRIER;
 			map.addIntoMap(xBarr, yBarr, element);
+			System.out.println(map.getItem().size() + " item");
 		}
 		System.out.println(map.getBarrier().size() +" barr");
+		
+		System.out.println(map.getTony() + " tony location");
 		Game game = new Game(map);
 		int strategi = 0;
 		if (inputStrategi.equals("ids")){
