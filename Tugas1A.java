@@ -39,7 +39,7 @@ public class Tugas1A {
 			int element = Map.ITEM;
 			map.addIntoMap(xItem, yItem, element);
 		}
-		System.out.println(map.getTotalItem()+ " barang");
+		//System.out.println(map.getTotalItem()+ " barang");
 
 		//Init Barrier
 		String barrierPositions = read.readLine();
@@ -51,11 +51,9 @@ public class Tugas1A {
 			int yBarr = Integer.parseInt(ySplit);
 			int element = Map.BARRIER;
 			map.addIntoMap(xBarr, yBarr, element);
-			System.out.println(map.getItem().size() + " item");
 		}
-		System.out.println(map.getBarrier().size() +" barr");
+		//System.out.println(map.getBarrier().size() +" Item");
 		
-		System.out.println(map.getTony() + " tony location");
 		Game game = new Game(map);
 		int strategi = 0;
 		if (inputStrategi.equals("ids")){
